@@ -16,4 +16,9 @@
     <ProjectReference Include="..\Forums.Service\Forums.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\forum\" />
+    <Folder Include="wwwroot\images\theme\" />
+  </ItemGroup>
+
 </Project>
