@@ -1,6 +1,9 @@
 ﻿@model Forums.Data.ViewModel.Forum.ForumTopicModel
 
 <h1>Welcome to the @Model.Forum.Name Forum!</h1>
+<span id="headingBtn">
+    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-newPost">Create Post</a>
+</span>
 @if (Model.Posts.Any())
 {
     <table class="table table-bordered table-hover">
@@ -28,7 +31,7 @@ else
         <h3>
             It looks like there are no @Model.Forum.Name posts yet.
             <br />
-            Why not 
+            Why not
             <a asp-controller="Post" asp-action="Create"
                asp-route-id="@Model.Forum.Id">
                 <span>Create</span>

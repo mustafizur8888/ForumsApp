@@ -25,7 +25,7 @@ namespace Forums.Service
                 .Where(x => x.Id == id)
                 .Include(post => post.User)
                 .Include(post => post.Replies)
-                    .ThenInclude(reply=>reply.User)
+                    .ThenInclude(reply => reply.User)
                 .Include(post => post.Forum)
                 .First();
         }
@@ -47,9 +47,10 @@ namespace Forums.Service
                 .Posts;
         }
 
-        public Task Add(Post post)
+        public async Task Add(Post post)
         {
-            throw new NotImplementedException();
+            _context.Posts.Add(post);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(Post post)

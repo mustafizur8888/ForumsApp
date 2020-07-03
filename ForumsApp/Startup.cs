@@ -1,5 +1,6 @@
 ﻿using Forums.Data;
 using Forums.Data.Interface;
+using Forums.Data.Models;
 using Forums.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -34,9 +35,10 @@ namespace ForumsApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-           
-            services.AddDefaultIdentity<IdentityUser>()
+
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+               // .AddUserManager<IdentityUser>();
 
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
