@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Forums.Data.Models;
 
-namespace Forums.Service
+namespace Forums.Data.Interface
 {
     public interface IForum
     {

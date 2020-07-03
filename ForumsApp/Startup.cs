@@ -1,4 +1,5 @@
 ﻿using Forums.Data;
+using Forums.Data.Interface;
 using Forums.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
