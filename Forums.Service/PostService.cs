@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Forums.Data;
 using Forums.Data.Interface;
 using Forums.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forums.Service
 {
@@ -20,7 +21,13 @@ namespace Forums.Service
 
         public Post GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Posts
+                .Where(x => x.Id == id)
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                    .ThenInclude(reply=>reply.User)
+                .Include(post => post.Forum)
+                .First();
         }
 
         public IEnumerable<Post> GetAll()

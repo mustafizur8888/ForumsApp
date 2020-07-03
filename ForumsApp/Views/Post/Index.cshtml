@@ -1,0 +1,27 @@
+﻿@model Forums.Data.ViewModel.Post.PostIndexModel
+<h1>@Model.Title</h1>
+
+<div>
+    Author:  @Model.AuthorName (@Model.AuthorRating)
+
+</div>
+
+<div>
+    @Model.PostContent
+</div>
+
+@if (Model.Replies.Any())
+{
+    foreach (var reply in Model.Replies)
+    {
+        <div>
+            <div>
+                Replay Author:  @reply.AuthorName
+            </div>
+
+            <div>
+                @reply.ReplyContent 
+            </div>
+        </div>
+    }
+}
