@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Forums.Data
+namespace Forums.Entity
 {
     public class Class1
     {

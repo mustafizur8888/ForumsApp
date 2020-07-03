@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Forums.Data;
 using Forums.Data.Models;
@@ -17,7 +18,16 @@ namespace Forums.Service
 
         public Forum GetById(int id)
         {
-            throw new NotImplementedException();
+            var forum = _context
+                .Forums
+                .Where(x => x.Id == id)
+                .Include(f=>f.Posts)
+                    .ThenInclude(p=>p.User)
+                .Include(f=>f.Posts)
+                    .ThenInclude(p=>p.Replies)
+                        .ThenInclude(r=>r.User)
+                .FirstOrDefault();
+            return forum;
         }
 
         public IEnumerable<Forum> GetAll()
