@@ -1,6 +1,10 @@
-﻿using Forums.Data.Interface;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Data.ViewModel.ApplicationUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +41,27 @@ namespace ForumsApp.Controllers
                 IsAdmin = userRoles.Contains("Admin")
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            string imageName = userId + Path.GetExtension(file.FileName);
+            string savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/users", imageName);
+
+            using (var stream = new FileStream(savePath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            savePath = savePath.Substring(savePath.IndexOf("/images") ,
+                savePath.Length - (savePath.IndexOf("/images"))).Replace(@"\",@"/");
+            await _userService.SetProfileImage(userId, savePath);
+
+            return RedirectToAction("Detail", "Profile",
+                new { id = userId });
         }
     }
 }

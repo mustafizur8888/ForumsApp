@@ -372,6 +372,13 @@ body {
     background-color: #fff;
 }
 
+#userProfileImage {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #ddd;
+}
+
 #userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating, #userActiveLabel {
     display: block;
     color: #444;

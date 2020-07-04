@@ -42,7 +42,7 @@
                             <ul class="dropdown-menu">
                                 <li class="divider" role="separator"></li>
                                 <li class="dropdown-header">Profile</li>
-                                <li><a asp-controller="Profile" asp-action="Detail">My Profile</a></li>
+                                <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <li class="divider" role="separator"></li>

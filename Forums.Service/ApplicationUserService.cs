@@ -43,10 +43,10 @@ namespace Forums.Service
             throw new NotImplementedException();
         }
 
-        public async Task SetProfileImage(string id, Uri uri)
+        public async Task SetProfileImage(string id, string path)
         {
             var user = GetById(id);
-            user.ProfileImageUrl = uri.AbsoluteUri;
+            user.ProfileImageUrl = path;
             _context.Update(user);
             await _context.SaveChangesAsync();
         }

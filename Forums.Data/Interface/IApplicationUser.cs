@@ -13,7 +13,7 @@ namespace Forums.Data.Interface
         Task IncrementRating(string id);
         Task Add(ApplicationUser user);
         Task Deactivate(ApplicationUser user);
-        Task SetProfileImage(string id, Uri uri);
+        Task SetProfileImage(string id, string path);
         Task BumpRating(string userId, Type type);
     }
 }
