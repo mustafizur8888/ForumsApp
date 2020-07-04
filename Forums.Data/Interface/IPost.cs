@@ -16,9 +16,6 @@ namespace Forums.Data.Interface
         Task Add(Post post);
         Task Delete(Post post);
         Task EditPostContent(int id, string newContent);
-
-       // Task AddReply(PostReply reply);
-
-     
+        Task AddReply(PostReply reply);
     }
 }

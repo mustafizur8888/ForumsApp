@@ -1,8 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Data.ViewModel.Forum;
 using Forums.Data.ViewModel.Post;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumsApp.Controllers
@@ -70,6 +74,51 @@ namespace ForumsApp.Controllers
         {
             return RedirectToAction("Topic", new { id, searchQuery });
         }
+
+        public IActionResult Create()
+        {
+            var model = new AddForumModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddForum(AddForumModel model)
+        {
+            var imageUri = "/images/users/default.png";
+            if (model.ImageUpload!=null)
+            {
+                string uploadImage = SaveUploadImage(model.ImageUpload);
+                imageUri = uploadImage;
+            }
+
+            var forum = new Forum
+            {
+                Title = model.Title,
+                Description = model.Description,
+                Created = DateTime.Now,
+                ImageUrl = imageUri
+            };
+            await _forumService.Create(forum);
+            return RedirectToAction("Index", "Forum");
+
+        }
+
+        private string SaveUploadImage(IFormFile file)
+        {
+            string imageName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            string savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/users", imageName);
+
+            using (var stream = new FileStream(savePath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            savePath = savePath.Substring(savePath.IndexOf("/images"),
+                savePath.Length - (savePath.IndexOf("/images"))).Replace(@"\", @"/");
+
+            return savePath;
+        }
+
 
         private ForumListingModel BuildForumListing(Post post)
         {
