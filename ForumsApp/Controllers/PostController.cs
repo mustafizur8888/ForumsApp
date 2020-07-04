@@ -6,11 +6,13 @@ using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Data.ViewModel.Post;
 using Forums.Data.ViewModel.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumsApp.Controllers
 {
+   
     public class PostController : Controller
     {
         private readonly IPost _postService;
@@ -27,6 +29,7 @@ namespace ForumsApp.Controllers
             _userManager = userManager;
             _userService = userService;
         }
+       
         public IActionResult Index(int id)
         {
             var post = _postService.GetById(id);
@@ -51,7 +54,7 @@ namespace ForumsApp.Controllers
 
             return View(model);
         }
-
+        [Authorize]
         public IActionResult Create(int id)
         {
             var forum = _forumService.GetById(id);
@@ -68,6 +71,7 @@ namespace ForumsApp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddPost(NewPostModel model)
         {
             var userId = _userManager.GetUserId(User);

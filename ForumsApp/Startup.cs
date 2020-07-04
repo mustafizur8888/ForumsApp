@@ -2,6 +2,7 @@
 using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Service;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,9 @@ namespace ForumsApp
             services.AddScoped<IApplicationUser, ApplicationUserService>();
 
             services.AddTransient<DataSeeder>();
+
+          
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
 
@@ -66,7 +70,7 @@ namespace ForumsApp
                 app.UseHsts();
             }
 
-            dataSeeder.SeedSuperUser();
+           // dataSeeder.SeedSuperUser();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Data.ViewModel.ApplicationUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumsApp.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -65,6 +67,7 @@ namespace ForumsApp.Controllers
                 new { id = userId });
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var profiles = _userService

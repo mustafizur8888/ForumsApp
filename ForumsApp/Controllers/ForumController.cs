@@ -6,6 +6,7 @@ using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Data.ViewModel.Forum;
 using Forums.Data.ViewModel.Post;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -79,12 +80,14 @@ namespace ForumsApp.Controllers
             return RedirectToAction("Topic", new { id, searchQuery });
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             var model = new AddForumModel();
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddForum(AddForumModel model)
         {

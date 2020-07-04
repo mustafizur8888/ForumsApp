@@ -55,9 +55,9 @@ body {
 }
 
 .frontPageSplash {
-    background-image: url("../images/theme/front-splash.png");
+    /*background-image: url("../images/theme/front-splash.png");
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: right;*/
 }
 
 .frontPageLearn {

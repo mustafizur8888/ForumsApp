@@ -3,11 +3,13 @@ using System.Threading.Tasks;
 using Forums.Data.Interface;
 using Forums.Data.Models;
 using Forums.Data.ViewModel.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumsApp.Controllers
 {
+    [Authorize]
     public class ReplyController : Controller
     {
         private readonly IPost _postService;
