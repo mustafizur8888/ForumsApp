@@ -28,27 +28,23 @@
             <div class="navbar-header">
                 <a class="navbar-brand navLogo" asp-controller="Home" asp-action="Index"></a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a asp-controller="Forum" asp-action="Index">Forums</a>
-                    </li>
+                    <li class="active"><a asp-controller="Forum" asp-action="Index">Forums</a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">
-                                Settings<span class="caret"></span>
-                            </a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li class="divider" role="separator"></li>
+                                <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Profile</li>
                                 <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
                                 @if (User.IsInRole("Admin"))
                                 {
-                                    <li class="divider" role="separator"></li>
+                                    <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Admin</li>
                                     <li><a asp-controller="Forum" asp-action="Create">Create Forum</a></li>
-                                    <li><a asp-controller="Profile" asp-action="Index">View Users</a></li>
+                                    <li><a asp-controller="Profile" asp-action="Index">Users</a></li>
                                 }
                             </ul>
                         </li>
@@ -67,18 +63,18 @@
                 }
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm" class="navbar">
+                    <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm" class="navbar-right">
                         <ul class="nav navbar-nav navbar-right">
-                            <li>Hello, @UserManager.GetUserName(User)</li>
+                            <li>
+                                Hello, @UserManager.GetUserName(User)
+                            </li>
                             <li>
                                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Sign Out</button>
-
                             </li>
                         </ul>
                     </form>
                 }
-                @*<partial name="_LoginPartial" />*@
-            </div>
+            </div><!--/.nav-collapse -->
         </div>
     </nav>
 

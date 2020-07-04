@@ -84,7 +84,7 @@ namespace ForumsApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddForum(AddForumModel model)
         {
-            var imageUri = "/images/users/default.png";
+            var imageUri = "/images/forum/default.png";
             if (model.ImageUpload!=null)
             {
                 string uploadImage = SaveUploadImage(model.ImageUpload);

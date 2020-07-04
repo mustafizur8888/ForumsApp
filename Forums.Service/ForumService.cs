@@ -43,14 +43,17 @@ namespace Forums.Service
             throw new NotImplementedException();
         }
 
-        public Task Create(Forum forum)
+        public async Task Create(Forum forum)
         {
-            throw new NotImplementedException();
+            _context.Forums.Add(forum);
+            await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var forum = GetById(id);
+            _context.Remove(forum);
+            await _context.SaveChangesAsync();
         }
 
         public Task UpdateForumTitle(int forumId, string newTitle)
