@@ -59,14 +59,17 @@ body {
     background-repeat: no-repeat;
     background-position: right;
 }
+
 .frontPageLearn {
     font-family: 'Roboto';
     padding: 12px 0 0 32px;
     height: 360px;
 }
+
 .sectionDescription {
     color: #EEE;
 }
+
 .frontPageHeading {
     font-size: 3.2em;
     margin: 16px 0;
@@ -96,14 +99,14 @@ body {
     transition: ease-in 0.2s;
 }
 
-.homeSearch:focus {
-    border: none !important;
-    outline: none !important;
-    transition: ease-in 0.2s;
-    color: #03A9F4;
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 5px 4px -6px #000;
-}
+    .homeSearch:focus {
+        border: none !important;
+        outline: none !important;
+        transition: ease-in 0.2s;
+        color: #03A9F4;
+        background-color: rgba(0, 0, 0, 0.7);
+        box-shadow: 0 5px 4px -6px #000;
+    }
 
 .frontPageContent {
     background-color: rgba(255, 255, 255, 0.9);
@@ -117,6 +120,23 @@ body {
     margin: 4px 0 16px 0;
 }
 
+/*Forum Topic page*/
+.searchBar {
+    padding: 3px 5px 2px 12px;
+    margin: 8px;
+    background-color: #333;
+    width: 10%;
+    transition: ease .3s;
+    border: none;
+}
+
+    .searchBar:focus {
+        color: black;
+        width: 60%;
+        background-color: #fff;
+    }
+
+
 
 .searchBar {
     padding: 3px 5px 2px 12px;
@@ -127,11 +147,11 @@ body {
     border: none;
 }
 
-.searchBar:focus {
-    color: black;
-    width: 60%;
-    background-color: #fff;
-}
+    .searchBar:focus {
+        color: black;
+        width: 60%;
+        background-color: #fff;
+    }
 
 
 /*Post page*/
@@ -219,10 +239,10 @@ body {
     border-radius: 0px !important;
 }
 
-.btn-back:hover {
-    transition: ease-in 0.1s;
-    background-color: #1e88e5 !important;
-}
+    .btn-back:hover {
+        transition: ease-in 0.1s;
+        background-color: #1e88e5 !important;
+    }
 
 .btn-newReply {
     background-color: #5c6bc0 !important;
@@ -231,10 +251,10 @@ body {
     border-radius: 0px !important;
 }
 
-.btn-newReply:hover {
-    background-color: #9fa8da !important;
-    transition: ease-in 0.1s;
-}
+    .btn-newReply:hover {
+        background-color: #9fa8da !important;
+        transition: ease-in 0.1s;
+    }
 
 .btn-file {
     color: white;
@@ -243,10 +263,10 @@ body {
     transition: ease-in 0.3s;
 }
 
-.btn-file:hover {
-    background-color: #039be5;
-    transition: ease-in 0.3s;
-}
+    .btn-file:hover {
+        background-color: #039be5;
+        transition: ease-in 0.3s;
+    }
 
 .btn-newPost {
     background-color: #c62828 !important;
@@ -255,11 +275,11 @@ body {
     border-radius: 0px !important;
 }
 
-.btn-newPost:hover {
-    transition: ease-in 0.1s;
-    background-color: #e53935 !important;
-    color: #fff !important;
-}
+    .btn-newPost:hover {
+        transition: ease-in 0.1s;
+        background-color: #e53935 !important;
+        color: #fff !important;
+    }
 
 .btn-submitPost {
     background-color: #00695c !important;
@@ -268,11 +288,11 @@ body {
     border-radius: 0px !important;
 }
 
-.btn-submitPost:hover {
-    transition: ease-in 0.1s;
-    background-color: #00897b !important;
-    color: #fff !important;
-}
+    .btn-submitPost:hover {
+        transition: ease-in 0.1s;
+        background-color: #00897b !important;
+        color: #fff !important;
+    }
 
 .btn-forumSearch {
     background: none !important;

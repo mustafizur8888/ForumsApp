@@ -39,9 +39,13 @@ namespace Forums.Service
                 .Include(post => post.Forum);
         }
 
-        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
         {
-            throw new NotImplementedException();
+            return string.IsNullOrWhiteSpace(searchQuery)
+                ? forum.Posts
+                : forum.Posts.Where(post
+                    => post.Title.ToLower().Contains(searchQuery.ToLower())
+                       || post.Content.ToLower().Contains(searchQuery.ToLower()));
         }
 
         public IEnumerable<Post> GetPostsByForum(int id)
