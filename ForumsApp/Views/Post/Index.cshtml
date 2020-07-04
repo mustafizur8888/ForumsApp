@@ -13,16 +13,16 @@
 
     </div>
 
-
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
             <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl)"></div>
             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">@Model.AuthorName</a>
-            <span class="postData">@Model.Date</span>
+
             @if (Model.IsAuthorAdmin)
             {
                 <span class="isAdmin smaller">Admin</span>
             }
+            <span class="postDate">@Model.Date</span>
         </div>
         <div class="col-md-9 postContentContainer">
             <div class="postContent">
@@ -34,7 +34,7 @@
     <div class="row" id="replyDivider"></div>
     @if (User.Identity.IsAuthenticated)
     {
-        <div class="row">
+        <div class="row" id="postReplyRow">
             <span>
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
@@ -56,11 +56,11 @@
                         <div class="isAdmin smaller">Admin</div>
                         <br />
                     }
-                    <span>@reply.Date</span>
+                    <span class="postDate">@reply.Date</span>
                 </div>
                 <div class="col-md-9 replyContentContainer">
                     <div class="postContent">
-                        @Html.Raw(reply.ReplyContent)
+                       @reply.ReplyContent
                     </div>
                 </div>
             </div>

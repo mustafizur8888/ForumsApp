@@ -43,7 +43,7 @@ namespace ForumsApp.Controllers
                 AuthorRating = post.User.Rating,
                 IsAuthorAdmin = IsAuthorAdmin(post.User),
                 Date = post.Created,
-                //  PostContent = _postFormatter.Prettify(post.Content),
+                PostContent = post.Content,
                 Replies = replies,
                 ForumId = post.Forum.Id,
                 ForumName = post.Forum.Title
@@ -102,7 +102,7 @@ namespace ForumsApp.Controllers
                 AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,
                 Date = reply.Created,
-                //    ReplyContent = _postFormatter.Prettify(reply.Content),
+                ReplyContent = reply.Content,
                 IsAuthorAdmin = IsAuthorAdmin(reply.User)
             });
         }

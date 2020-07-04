@@ -209,6 +209,31 @@ body {
     border-left: 1px solid #ddd;
 }
 
+.hasRecentPost {
+    padding: 2px;
+    background-color: #fe552f;
+    color: #fff;
+    text-align: center;
+    border-radius: 1px;
+    width: 30px;
+}
+
+.authorBlock {
+    padding: 18px;
+    border: 1px dashed #00AFCF;
+    margin-bottom: 8px;
+}
+#originalPost {
+    background-color: #fff;
+    padding: 12px;
+    margin-bottom: 8px;
+
+}
+.createPostSection {
+    background-color: #fff;
+    padding: 24px;
+}
+
 .postAuthorRating {
     font-size: 0.9em;
     color: #159;
@@ -224,6 +249,11 @@ body {
     background-color: #192620;
     /*background-color: #212121;*/
     padding: 8px 0px 24px 24px;
+}
+
+#replyDivider {
+    height: 2px;
+    margin-bottom: 12px;
 }
 
 #headingBtn {
@@ -372,11 +402,52 @@ body {
     background-color: #fff;
 }
 
+.userProfilePic {
+    height: 140px;
+    width: 140px;
+    background-size: 100%;
+}
+
 #userProfileImage {
     display: inline-block;
     width: 200px;
     height: 200px;
     background-color: #ddd;
+    background-size: 100%;
+}
+
+
+.fillSquare {
+    background-size: 100%;
+}
+
+.replyContent {
+    display: table;
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    width: inherit;
+}
+
+#postReplyRow {
+    background-color: #3F51B5;
+    padding: 8px;
+}
+
+.replyContentContainer .replyAuthorContainer {
+    display: table-cell;
+    padding: 12px;
+}
+
+.isAdmin {
+    display: inline-block;
+    padding: 3px;
+    background-color: #FFEB3B;
+    color: #000;
+    font-family: 'Roboto Mono'
+}
+
+.smaller {
+    font-size: 0.8em;
 }
 
 #userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating, #userActiveLabel {

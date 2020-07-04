@@ -30,12 +30,16 @@ namespace ForumsApp.Controllers
                  {
                      Id = forum.Id,
                      Name = forum.Title,
-                     Description = forum.Description
+                     Description = forum.Description,
+                     NumberOfPosts = forum.Posts?.Count() ?? 0,
+                     NumberOfUsers = _forumService.GetAllActiveUsers(forum.Id).Count(),
+                     ImageUrl = forum.ImageUrl,
+                     HasRecentPost = _forumService.HasRecentPost(forum.Id)
                  });
 
             var model = new ForumIndexModel
             {
-                ForumList = forums
+                ForumList = forums.OrderBy(f => f.Name)
             };
 
             return View(model);
@@ -46,7 +50,7 @@ namespace ForumsApp.Controllers
             var forum = _forumService.GetById(id);
 
             var posts = !string.IsNullOrWhiteSpace(searchQuery) ? _postService.GetFilteredPosts(forum, searchQuery).ToList() : forum.Posts.ToList();
-            
+
             var postListings = posts.Select(post =>
                 new PostListingModel
                 {
@@ -85,7 +89,7 @@ namespace ForumsApp.Controllers
         public async Task<IActionResult> AddForum(AddForumModel model)
         {
             var imageUri = "/images/forum/default.png";
-            if (model.ImageUpload!=null)
+            if (model.ImageUpload != null)
             {
                 string uploadImage = SaveUploadImage(model.ImageUpload);
                 imageUri = uploadImage;

@@ -5,7 +5,7 @@
             Reply | @Model.PostTitle
         </div>
         <div class="forumLogo" style="background-image: url(@Model.ForumImageUrl)"></div>
-        <span>
+        <span id="headingBtn">
             <a asp-controller="Post"
                asp-action="Index" asp-route-id="@Model.PostId"
                class="btn btn-back">
@@ -14,8 +14,8 @@
         </span>
     </div>
 
-    <div class="row">
-        <div id="postReply">
+    <div class="row ">
+        <div id="originalPost">
             <h3>
                 @Model.PostTitle
             </h3>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="row">
-        <div id="createReply">
+        <div id="createReply" class="createPostSection">
             <div class="authorBlock">
                 You're submitting this Reply as @Model.AuthorName
             </div>

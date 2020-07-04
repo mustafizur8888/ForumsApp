@@ -66,7 +66,10 @@
                     <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm" class="navbar-right">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                Hello, @UserManager.GetUserName(User)
+                                <a asp-controller="Profile" asp-action="Detail"
+                                   asp-route-id="@UserManager.GetUserId(User)">
+                                    @UserManager.GetUserName(User)
+                                </a>
                             </li>
                             <li>
                                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Sign Out</button>

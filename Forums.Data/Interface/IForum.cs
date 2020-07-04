@@ -8,11 +8,12 @@ namespace Forums.Data.Interface
     {
         Forum GetById(int id);
         IEnumerable<Forum> GetAll();
-        IEnumerable<ApplicationUser> GetAllActiveUsers();
+        IEnumerable<ApplicationUser> GetAllActiveUsers(int id);
 
         Task Create(Forum forum);
         Task Delete(int id);
         Task UpdateForumTitle(int forumId, string newTitle);
         Task UpdateForumDescription(int forumId, string newDescription);
+        bool HasRecentPost(int forumId);
     }
 }

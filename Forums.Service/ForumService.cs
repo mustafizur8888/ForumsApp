@@ -22,11 +22,11 @@ namespace Forums.Service
             var forum = _context
                 .Forums
                 .Where(x => x.Id == id)
-                .Include(f=>f.Posts)
-                    .ThenInclude(p=>p.User)
-                .Include(f=>f.Posts)
-                    .ThenInclude(p=>p.Replies)
-                        .ThenInclude(r=>r.User)
+                .Include(f => f.Posts)
+                    .ThenInclude(p => p.User)
+                .Include(f => f.Posts)
+                    .ThenInclude(p => p.Replies)
+                        .ThenInclude(r => r.User)
                 .FirstOrDefault();
             return forum;
         }
@@ -38,9 +38,21 @@ namespace Forums.Service
                 .Include(x => x.Posts);
         }
 
-        public IEnumerable<ApplicationUser> GetAllActiveUsers()
+        public IEnumerable<ApplicationUser> GetAllActiveUsers(int id)
         {
-            throw new NotImplementedException();
+            var posts = GetById(id).Posts;
+            if (posts != null || !posts.Any())
+            {
+                var postUsers = posts.Select(p => p.User);
+                var replyUsers = posts
+                    .SelectMany(p => p.Replies)
+                    .Select(r => r.User);
+
+                var users = postUsers
+                    .Union(replyUsers).Distinct();
+                return users;
+            }
+            return new List<ApplicationUser>();
         }
 
         public async Task Create(Forum forum)
@@ -64,6 +76,13 @@ namespace Forums.Service
         public Task UpdateForumDescription(int forumId, string newDescription)
         {
             throw new NotImplementedException();
+        }
+
+        public bool HasRecentPost(int forumId)
+        {
+            const int hoursAgo = 12;
+            var window = DateTime.Now.AddHours(-hoursAgo);
+            return GetById(forumId).Posts.Any(post => post.Created > window);
         }
     }
 }

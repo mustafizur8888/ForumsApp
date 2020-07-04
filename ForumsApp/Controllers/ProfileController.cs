@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Forums.Data.Interface;
 using Forums.Data.Models;
@@ -56,12 +57,34 @@ namespace ForumsApp.Controllers
                 file.CopyTo(stream);
             }
 
-            savePath = savePath.Substring(savePath.IndexOf("/images") ,
-                savePath.Length - (savePath.IndexOf("/images"))).Replace(@"\",@"/");
+            savePath = savePath.Substring(savePath.IndexOf("/images"),
+                savePath.Length - (savePath.IndexOf("/images"))).Replace(@"\", @"/");
             await _userService.SetProfileImage(userId, savePath);
 
             return RedirectToAction("Detail", "Profile",
                 new { id = userId });
         }
+
+        public IActionResult Index()
+        {
+            var profiles = _userService
+                .GetAll().OrderByDescending(user => user.Rating)
+                .Select(u => new ProfileModel
+                {
+                    Email = u.Email,
+                    ProfileImageUrl = u.ProfileImageUrl,
+                    Username = u.UserName,
+                    UserRating = u.Rating.ToString(),
+                    MemberSince = u.MemberSince,
+                    UserId = u.Id
+                });
+            var model = new ProfileListModel
+            {
+                Profiles = profiles
+            };
+
+            return View(model);
+        }
+
     }
 }
