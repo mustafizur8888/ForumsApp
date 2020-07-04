@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Forums.Data.Interface
+﻿namespace Forums.Data.Interface
 {
-    interface IUpload
+    public interface IUpload
     {
     }
 }

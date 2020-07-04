@@ -37,7 +37,7 @@ namespace ForumsApp.Areas.Identity.Pages.Account
             }
             else
             {
-                return Page();
+                return RedirectToAction("Index", "Home");
             }
         }
     }
