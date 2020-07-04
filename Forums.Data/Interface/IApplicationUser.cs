@@ -10,7 +10,7 @@ namespace Forums.Data.Interface
         ApplicationUser GetById(string id);
         IEnumerable<ApplicationUser> GetAll();
 
-        Task IncrementRating(string id);
+        Task UpdateUserRating(string id, Type type);
         Task Add(ApplicationUser user);
         Task Deactivate(ApplicationUser user);
         Task SetProfileImage(string id, string path);

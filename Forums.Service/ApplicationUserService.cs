@@ -27,9 +27,23 @@ namespace Forums.Service
             return _context.ApplicationUsers;
         }
 
-        public Task IncrementRating(string id)
+        public async Task UpdateUserRating(string id, Type type)
         {
-            throw new NotImplementedException();
+            var user = GetById(id);
+            user.Rating = CalculateUserRating(type, user.Rating);
+            await _context.SaveChangesAsync();
+        }
+
+        private int CalculateUserRating(Type type, int userRating)
+        {
+            var inc = 0;
+            if (type == typeof(Post))
+                inc = 1;
+
+            if (type == typeof(PostReply))
+                inc = 3;
+
+            return userRating + inc;
         }
 
         public async Task Add(ApplicationUser user)
