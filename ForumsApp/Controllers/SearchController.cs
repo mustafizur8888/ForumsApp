@@ -42,6 +42,7 @@ namespace ForumsApp.Controllers
                 EmptySearchResults = areNoResults
             };
 
+            return View(model);
         }
 
         private ForumListingModel BuildForumListing(Post post)
