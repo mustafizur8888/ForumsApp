@@ -211,6 +211,76 @@ body {
     margin-right: 20px;
 }
 
+/* Custom Buttons */
+.btn-back {
+    background-color: #555;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-back:hover {
+    transition: ease-in 0.1s;
+    background-color: #1e88e5 !important;
+}
+
+.btn-newReply {
+    background-color: #5c6bc0 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-newReply:hover {
+    background-color: #9fa8da !important;
+    transition: ease-in 0.1s;
+}
+
+.btn-file {
+    color: white;
+    width: 100%;
+    background-color: #4fc3f7;
+    transition: ease-in 0.3s;
+}
+
+.btn-file:hover {
+    background-color: #039be5;
+    transition: ease-in 0.3s;
+}
+
+.btn-newPost {
+    background-color: #c62828 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-newPost:hover {
+    transition: ease-in 0.1s;
+    background-color: #e53935 !important;
+    color: #fff !important;
+}
+
+.btn-submitPost {
+    background-color: #00695c !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-submitPost:hover {
+    transition: ease-in 0.1s;
+    background-color: #00897b !important;
+    color: #fff !important;
+}
+
+.btn-forumSearch {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+}
+
 
 /* Forum index */
 #forumIndexTable td {

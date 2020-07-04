@@ -37,8 +37,9 @@ namespace ForumsApp
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-               // .AddUserManager<IdentityUser>();
+            // .AddUserManager<IdentityUser>();
 
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();

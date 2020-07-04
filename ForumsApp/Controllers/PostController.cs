@@ -40,7 +40,7 @@ namespace ForumsApp.Controllers
                 AuthorName = post.User.UserName,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
-                //   IsAuthorAdmin = IsAuthorAdmin(post.User),
+                IsAuthorAdmin = IsAuthorAdmin(post.User),
                 Date = post.Created,
                 //  PostContent = _postFormatter.Prettify(post.Content),
                 Replies = replies,
@@ -48,7 +48,7 @@ namespace ForumsApp.Controllers
                 ForumName = post.Forum.Title
             };
 
-            return View();
+            return View(model);
         }
 
         public IActionResult Create(int id)
@@ -102,8 +102,13 @@ namespace ForumsApp.Controllers
                 AuthorRating = reply.User.Rating,
                 Date = reply.Created,
                 //    ReplyContent = _postFormatter.Prettify(reply.Content),
-                //    IsAuthorAdmin = IsAuthorAdmin(reply.User)
+                IsAuthorAdmin = IsAuthorAdmin(reply.User)
             });
+        }
+        private bool IsAuthorAdmin(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user)
+                .Result.Contains("Admin");
         }
     }
 }
